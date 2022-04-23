@@ -201,7 +201,6 @@ int getChar(int threadId, char *buffer, INFOSFILE *partialInfo) {
 
     /* check if file already done*/
     if (infofile[fileInProcessing].done == true) {
-        printf("File terminated\n");
         /*check if is it the last file to be processed*/
         if (fileInProcessing == nFiles - 1) {
             if ((pthread_mutex_unlock (&accessCR)) != 0) {
@@ -209,7 +208,6 @@ int getChar(int threadId, char *buffer, INFOSFILE *partialInfo) {
                 int status = EXIT_FAILURE;
                 pthread_exit(&status);
             }
-            printf("VAI terminar\n");
             return 1;            /*if is the last file and it is done, end */
         }
 

@@ -72,7 +72,7 @@ int main(int argc, char *argv[]){
         { perror ("error on creating thread worker");
             exit (EXIT_FAILURE);
         }
-        printf("Thread Created: %d\n", t);
+        printf("Thread Created: %u\n", t);
     }
 
     for(int t=0; t<numberOfThreads; t++)   {
@@ -80,7 +80,7 @@ int main(int argc, char *argv[]){
         { perror ("error on waiting for thread worker");
             exit (EXIT_FAILURE);
         }
-        printf ("thread worker, with id %u, has terminated. \n", t);
+        printf ("thread terminated: %u\n", t);
 
     }
 
