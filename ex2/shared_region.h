@@ -18,7 +18,7 @@ typedef struct chunk_structure
   unsigned int next_enter;
   unsigned int next_process;
   unsigned int counter;
-  pthread_mutex_t mutex;
+  pthread_mutex_t monitor;
   pthread_cond_t NotEmpty;
   pthread_cond_t NotFull;
 } chunk_structure;
