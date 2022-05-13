@@ -48,8 +48,8 @@ int main(int argc, char *argv[])
 
     init();
 
-    int matrices_size[nFiles];                                              //Initialization matrices info
-    int matrices_order[nFiles];
+    int sizes[nFiles];                                              //Initialization matrices info
+    int orders[nFiles];
 
     
     for (int worker_index = 0; worker_index < numberOfThreads; worker_index++)      //Create threads
@@ -88,8 +88,8 @@ int main(int argc, char *argv[])
         }
 
         determinants[file_id] = malloc(sizeof(double) * number_of_matrices);        //Allocation list of determinants  for file
-        matrices_size[file_id] = number_of_matrices;                                //Save number of matrices for file
-        matrices_order[file_id] = matrix_order;                                     //Save matrix orders for file
+        sizes[file_id] = number_of_matrices;                                //Save number of matrices for file
+        orders[file_id] = matrix_order;                                     //Save matrix orders for file
 
         for (int matrix_index = 0; matrix_index < number_of_matrices; matrix_index++)
         {
@@ -131,10 +131,10 @@ int main(int argc, char *argv[])
     
     for (int file = 0; file < nFiles; file++)                                       // print results
     {
-        printf("Number of matrices to be read: %d\n", matrices_size[file]);
-        printf("Matrices order: %d\n\n", matrices_order[file]);
+        printf("Number of matrices to be read: %d\n", sizes[file]);
+        printf("Matrices order: %d\n\n", orders[file]);
 
-        for (int mat_id = 0; mat_id < matrices_size[file]; mat_id++)
+        for (int mat_id = 0; mat_id < sizes[file]; mat_id++)
         {
             printf("Processing matrix %d\n", mat_id + 1);
             printf("The determinant is %.3e\n", determinants[file][mat_id]);
